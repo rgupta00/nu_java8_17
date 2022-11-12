@@ -1,0 +1,31 @@
+package com.day1.session1.demo;
+
+interface Foo{
+	void foo();
+	default void fooDefault() {
+		System.out.println("some default imp of method");
+	}
+	static void fooStatic() {
+		System.out.println("some static method of Foo interface");
+	}
+}
+class FooImp implements Foo{
+
+	@Override
+	public void foo() {
+		System.out.println("FooImp imp foo() method");
+	}
+	
+}
+public class A_InterfaceEvalutation {
+	
+	public static void main(String[] args) {
+		
+		Foo foo=new FooImp();
+		foo.foo();
+		foo.fooDefault();
+		
+		Foo.fooStatic();
+	}
+
+}

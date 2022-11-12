@@ -1,0 +1,21 @@
+package com.day1.session1.demo;
+@FunctionalInterface
+interface MyInn{
+	 void foo();
+	
+	
+}
+public class B_FunctionalInterface {
+	
+	public static void main(String[] args) {
+		
+		MyInn inn=new MyInn() {
+			
+			@Override
+			public void foo() {
+				System.out.println("hello to My Inner class imp");
+			}
+		};
+	}
+
+}

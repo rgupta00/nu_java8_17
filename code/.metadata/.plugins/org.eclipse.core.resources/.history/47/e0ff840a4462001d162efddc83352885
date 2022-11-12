@@ -1,0 +1,10 @@
+package com.day1.session1.demo;
+@FunctionalInterface
+interface MyInn{
+	 void foo();
+	 public boolean equals2(Object obj);
+	
+}
+public class B_FunctionalInterface {
+
+}

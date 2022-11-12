@@ -1,0 +1,17 @@
+package com.day1.session1.demo;
+
+interface MyInn{
+	void foo();
+	void foo2();
+	default void bar() {
+		
+	}
+	
+	static void barStatic() {
+		
+	}
+	
+}
+public class B_FunctionalInterface {
+
+}

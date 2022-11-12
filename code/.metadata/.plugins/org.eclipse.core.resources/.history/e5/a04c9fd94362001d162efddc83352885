@@ -1,0 +1,17 @@
+package com.day1.session1.demo;
+@FunctionalInterface
+interface MyInn{
+	void foo();
+	
+	default void bar() {
+		System.out.println("hello to all");
+	}
+	
+	static void barStatic() {
+		System.out.println("bar static method");
+	}
+	
+}
+public class B_FunctionalInterface {
+
+}

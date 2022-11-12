@@ -1,0 +1,9 @@
+package com.day1.session1.demo;
+
+public class C_AnnVsLambda {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

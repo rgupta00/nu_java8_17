@@ -1,0 +1,56 @@
+package com.day1.session1.demo;
+
+@FunctionalInterface
+interface MyInn {
+	void foo();
+
+}
+
+
+public class B_FunctionalInterface {
+
+	public static void main(String[] args) {
+		//"type inference"
+		
+		
+		Thread thread=new Thread(() ->System.out.println("job of the thread...."));
+		thread.run();
+		
+		
+		
+		//ann inner class
+		//key diff: ann inner class have its own this while lambda dont have its own this, lambda have "laxical scope"
+		MyInn inn = new MyInn() {
+
+			@Override
+			public void foo() {
+				System.out.println("hello to My Inner class imp");
+			}
+		};
+
+		//lambada expression
+		MyInn inn2 = () -> System.out.println("hello to My Inner class imp");
+		MyInn inn3 = () -> System.out.println("hello to My Inner class imp");
+		MyInn inn4 = () -> System.out.println("hello to My Inner class imp");
+			
+		
+
+//		
+//MyInn inn2=new MyInn() {
+//			
+//			@Override
+//			public void foo() {
+//				System.out.println("hello to My Inner class imp");
+//			}
+//		};
+//		
+//MyInn inn3=new MyInn() {
+//			
+//			@Override
+//			public void foo() {
+//				System.out.println("hello to My Inner class imp");
+//			}
+//		};
+	}
+
+}
