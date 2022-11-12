@@ -419,14 +419,31 @@ time taken : 54 ms
 1231
 
 
+rajeev gupta:
+9958543978
 
 
 
 
 
 
+https://drive.google.com/drive/folders/1qB5iS2d26F66BSXSqoWT2zyBoIJgWwN1?usp=share_link
 
 
+
+
+Optional java 8
+stream example and case study
+|| stream java 8 
+java 8 date and time api
+
+
+0: additive identity
+1: mutiplicative ....
+
+
+time taken : 254 ms
+50000005000000
 
 
 

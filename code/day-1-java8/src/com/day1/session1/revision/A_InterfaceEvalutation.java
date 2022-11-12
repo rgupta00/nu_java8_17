@@ -1,0 +1,34 @@
+package com.day1.session1.revision;
+
+interface Bar{
+	default void fooDefault() {
+		System.out.println("some default imp of method");
+	}
+	
+}
+
+interface Foo{
+	default void fooDefault() {
+		System.out.println("some default imp of method");
+	}
+	
+}
+class FooBarImp implements Foo, Bar{
+
+	@Override
+	public void fooDefault() {
+		Bar.super.fooDefault();
+		Foo.super.fooDefault();
+	}
+
+}
+
+public class A_InterfaceEvalutation {
+	
+	public static void main(String[] args) {
+		
+		
+	}
+
+}
+

@@ -1,0 +1,16 @@
+package com.day1.session2.ex7;
+
+public class DemoPerellelProcesing {
+	
+	public static void main(String[] args) {
+		//reducation vs accumulation
+		
+		// 1_000_000
+		long sum=0;
+		for(long i=0;i<=1_000_000; i++) {
+			sum+=i;
+		}
+		System.out.println(sum);
+	}
+
+}

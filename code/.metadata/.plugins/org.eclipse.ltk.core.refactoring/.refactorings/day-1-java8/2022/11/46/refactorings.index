@@ -3,3 +3,21 @@
 1668229465805	Copy compilation unit
 1668233451418	Copy compilation unit
 1668235440797	Extract local variable 'string'
+1668243383015	Extract local variable 'orElse'
+1668243482110	Copy compilation unit
+1668244097291	Extract local variable 'map'
+1668244136571	Extract local variable 'flatMap'
+1668244172319	Extract local variable 'flatMap'
+1668245243292	Extract local variable 'map'
+1668245275590	Extract local variable 'flatMap'
+1668245409294	Extract local variable 'flatMap'
+1668245439737	Extract local variable 'flatMap'
+1668245792995	Extract local variable 'max'
+1668245930865	Extract local variable 'allMatch'
+1668246041650	Extract local variable 'noneMatch'
+1668246224692	Extract local variable 'findAny'
+1668247572032	Extract local variable 'collect'
+1668247936663	Extract local variable 'keySet'
+1668248007736	Extract local variable 'entrySet'
+1668249020672	Extract local variable 'stream'
+1668249456562	Copy compilation unit

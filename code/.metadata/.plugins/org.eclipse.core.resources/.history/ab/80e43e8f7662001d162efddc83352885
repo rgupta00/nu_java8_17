@@ -1,0 +1,24 @@
+package com.day1.session2.ex5;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class DemoMapIteration2 {
+	
+	public static void main(String[] args) {
+	      Map<Emp, String> mapData=new HashMap<>();
+	      mapData.put(new Emp(2, "rajat", 4000), "Ravi");
+	      mapData.put(new Emp(62, "seema", 4000), "Kapil");
+	      
+	     
+	     //mapData.forEach(( key,  value)-> System.out.println(key + " : "+ value));
+//	     mapData.entrySet().stream().forEach(e-> System.out.println(e.getKey()+" : "+ e.getValue()));
+	      
+	      // java.lang.ClassCastException: class java.util.HashMap$Node cannot be cast to class java.lang.Comparable 
+	      mapData.entrySet()
+	      .stream()
+	      .sorted()
+	      .forEach(e-> System.out.println(e.getKey()+" : "+ e.getValue()));
+	}
+
+}
