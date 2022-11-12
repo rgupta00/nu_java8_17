@@ -1,0 +1,111 @@
+package com.day1.session1.demo;
+
+import java.util.function.BiPredicate;
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+class Emp{
+	private String name;
+
+	public Emp(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public static boolean isNameContainRaj(String name) {
+		return name.contains("raj");
+	}
+}
+
+public class F_SomeFIFromJDK {
+	
+	public static void main(String[] args) {
+		
+		
+		//Funcation convert something to something else
+		
+		//Book object --> title
+		
+		Function<Book, String>titleFuncation=book-> book.getTitle();
+		
+		Function<Book, Double>priceFuncation=book-> book.getPrice();
+		
+		Function<Book, Double>priceFuncationWithMR=Book::getPrice;
+		
+		Function<Book, Double>pricyBookFunction=Book::getPrice;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//Predicate
+		//to check if name contain raj
+		
+		//lambda vs Method ref ::
+		
+		Predicate<String> predicate= name-> name.contains("raj");
+		
+		Predicate<String> predicateWithMethodRef= Emp::isNameContainRaj;
+		
+		Predicate<Integer> predicate2=no-> no%2==0;
+		
+		System.out.println(predicate.test("amit"));
+		
+		System.out.println(predicate2.test(33));
+		
+		//predicate for costly book
+		Predicate<Book>bookPredicateCostly= book ->book.getPrice()>=500;
+		Predicate<Book>bookPredicateJava= book ->book.getTitle().contains("java");
+		
+		Book book=new Book(22, "java in action", "Raj", 400);
+		//check if books is java book and costly too
+		
+		Predicate<Book>costlyAndJavaBookPredicate= bookPredicateCostly.and(bookPredicateJava);
+		
+		System.out.println(costlyAndJavaBookPredicate.test(book));
+		
+		Predicate<Book>costlyOrJavaBookPredicate= bookPredicateCostly.or(bookPredicateJava);
+		
+		Predicate<Book>costlyAndJavaBookPredicateNeg= bookPredicateCostly.and(bookPredicateJava).negate();
+		
+		//x and y if x > y ? true: false
+		
+		BiPredicate<Integer, Integer> p1=( x,  y)-> x>y;
+			
+		System.out.println(p1.test(4, 71));
+		
+	
+		
+		
+	}
+
+}

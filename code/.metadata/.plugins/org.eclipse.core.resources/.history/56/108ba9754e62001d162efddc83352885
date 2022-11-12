@@ -1,0 +1,33 @@
+package com.day1.session1.demo;
+
+import java.util.function.Predicate;
+
+public class F_SomeFIFromJDK {
+	
+	public static void main(String[] args) {
+		//Predicate
+		//to check if name contain raj
+		
+		Predicate<String> predicate= name-> name.contains("raj");
+		
+		Predicate<Integer> predicate2=no-> no%2==0;
+		
+		System.out.println(predicate.test("amit"));
+		
+		System.out.println(predicate2.test(33));
+		
+		//predicate for costly book
+		Predicate<Book>bookPredicateCostly= book ->book.getPrice()>=500;
+		Predicate<Book>bookPredicateJava= book ->book.getTitle().contains("java");
+		
+		Book book=new Book(22, "java in action", "Raj", 400);
+		//check if books is java book and costly too
+		
+		Predicate<Book>costlyAndJavaBookPredicate= bookPredicateCostly.and(bookPredicateJava);
+		
+		System.out.println(costlyAndJavaBookPredicate.test(book));
+		
+	
+	}
+
+}

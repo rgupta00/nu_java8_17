@@ -5,6 +5,34 @@ public class Book {
 	private String title;
 	private String author;
 	private double price;
+	
+	
+	
+	//---this method take "this" and return nothing
+	public  void foo() {
+		System.out.println("I");
+		System.out.println("II");
+		System.out.println("III");
+
+	}
+	
+	public BookDto convertToBookDto() {
+		return new BookDto(title, price);
+	}
+	
+	
+	public boolean isCostlyBook() {
+		return price>=500;
+		
+	}
+	
+	public String costlyBookName() {
+		if( price>=500)
+			return title;
+		else
+			return "book not found";
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -23,6 +51,7 @@ public class Book {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+	
 	public double getPrice() {
 		return price;
 	}
@@ -41,11 +70,6 @@ public class Book {
 		return "Book [id=" + id + ", title=" + title + ", author=" + author
 				+ ", price=" + price + "]";
 	}
-	public Book() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
 	
 	
 }

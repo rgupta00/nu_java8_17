@@ -1,0 +1,7 @@
+package com.day1.session1.demo;
+
+public class BookDto {
+	private String title;
+	private double price;
+	
+}

@@ -1,0 +1,25 @@
+package com.day1.session2.ex3;
+import java.util.*;
+public class AppleApp {
+	
+	public static List<Apple> getAllGreenApples(List<Apple> apples){
+		List<Apple> list=new ArrayList<>();
+		for(Apple temp: apples) {
+			if(temp.getColor().equals("green"))
+				list.add(temp);
+		}
+		return list;
+		
+	}
+	
+	public static List<Apple> getAllHeavyApples(List<Apple> apples){
+		List<Apple> list=new ArrayList<>();
+		for(Apple temp: apples) {
+			if(temp.getWeight()>=250)
+				list.add(temp);
+		}
+		return list;
+		
+	}
+	
+}

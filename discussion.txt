@@ -7,3 +7,454 @@ https://drive.google.com/file/d/1_PjqGoSEnz9Ph-QoSnGTJ1gboJlIuZBj/view?usp=shari
 
 playlist on core java
 https://www.youtube.com/playlist?list=PLv2-IhRmhbySgIQo3rH8KnclTSOYAp2xG
+
+
+Discussion on Java 8:
+---------------------
+
+basics of funcatioal programming:
+
+
+what is the improvement in java 8 interface:
+----------------------------------------------
+
+
+//diamond problem is also possible with interface
+//interface Bar{
+//	default void fooDefault() {
+//		System.out.println("some default imp of method");
+//	}
+//	
+//}
+//
+//interface Foo{
+//	default void fooDefault() {
+//		System.out.println("some default imp of method");
+//	}
+//	
+//}
+//class FooBarImp implements Foo, Bar{
+//
+//
+//}
+
+public class A_InterfaceEvalutation {
+	
+	public static void main(String[] args) {
+		
+		
+	}
+
+}
+
+
+
+
+
+lambada vs ann inner class:
+---------------------------
+
+@FunctionalInterface
+interface MyInn {
+	void foo();
+
+}
+
+
+public class B_FunctionalInterface {
+
+	public static void main(String[] args) {
+		//"type inference"
+		
+		
+		Thread thread=new Thread(() ->System.out.println("job of the thread...."));
+		thread.run();
+		
+		
+		
+		//ann inner class
+		//key diff: ann inner class have its own this while lambda dont have its own this, lambda have "laxical scope"
+		MyInn inn = new MyInn() {
+
+			@Override
+			public void foo() {
+				System.out.println("hello to My Inner class imp");
+			}
+		};
+
+		//lambada expression
+		MyInn inn2 = () -> System.out.println("hello to My Inner class imp");
+		MyInn inn3 = () -> System.out.println("hello to My Inner class imp");
+		MyInn inn4 = () -> System.out.println("hello to My Inner class imp");
+			
+		
+
+//		
+//MyInn inn2=new MyInn() {
+//			
+//			@Override
+//			public void foo() {
+//				System.out.println("hello to My Inner class imp");
+//			}
+//		};
+//		
+//MyInn inn3=new MyInn() {
+//			
+//			@Override
+//			public void foo() {
+//				System.out.println("hello to My Inner class imp");
+//			}
+//		};
+	}
+
+}
+
+
+//key diff: ann inner class have its own this while lambda dont have its own this, lambda have "laxical scope"
+--------------------------------------------------------------------------------------------------------------
+
+
+class Demo{
+	private int i=9;
+	public void foo() {
+		
+		Runnable runnable=new Runnable() {
+			private int i=90;
+			@Override
+			public void run() {
+				System.out.println("hello..."+Demo.this.i);
+				System.out.println("hello..."+this.i);
+			}
+		};
+		runnable.run();
+	}
+}
+
+class Demo{
+	private int i=9;
+	public void foo() {
+		
+		Runnable runnable=()-> {
+				int i=98;
+				System.out.println("hello..."+Demo.this.i);
+				System.out.println("hello..."+this.i);
+			
+		};
+		runnable.run();
+	}
+}
+public class C_AnnVsLambda {
+	
+	public static void main(String[] args) {
+		
+		Demo demo=new Demo();
+		demo.foo();
+	}
+
+}
+
+-----------------------------------
+lambda expression have lexical scope
+----------------------------------
+
+
+
+
+
+
+
+Some readymade FI in jdk
+-------------------------------
+
+
+
+Predicate:
+
+
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
+
+class Emp{
+	private String name;
+
+	public Emp(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public static boolean isNameContainRaj(String name) {
+		return name.contains("raj");
+	}
+}
+
+public class F_SomeFIFromJDK {
+	
+	public static void main(String[] args) {
+		//Predicate
+		//to check if name contain raj
+		
+		//lambda vs Method ref ::
+		
+		Predicate<String> predicate= name-> name.contains("raj");
+		
+		Predicate<String> predicateWithMethodRef= Emp::isNameContainRaj;
+		
+		Predicate<Integer> predicate2=no-> no%2==0;
+		
+		System.out.println(predicate.test("amit"));
+		
+		System.out.println(predicate2.test(33));
+		
+		//predicate for costly book
+		Predicate<Book>bookPredicateCostly= book ->book.getPrice()>=500;
+		Predicate<Book>bookPredicateJava= book ->book.getTitle().contains("java");
+		
+		Book book=new Book(22, "java in action", "Raj", 400);
+		//check if books is java book and costly too
+		
+		Predicate<Book>costlyAndJavaBookPredicate= bookPredicateCostly.and(bookPredicateJava);
+		
+		System.out.println(costlyAndJavaBookPredicate.test(book));
+		
+		Predicate<Book>costlyOrJavaBookPredicate= bookPredicateCostly.or(bookPredicateJava);
+		
+		Predicate<Book>costlyAndJavaBookPredicateNeg= bookPredicateCostly.and(bookPredicateJava).negate();
+		
+		//x and y if x > y ? true: false
+		
+		BiPredicate<Integer, Integer> p1=( x,  y)-> x>y;
+			
+		System.out.println(p1.test(4, 71));
+		
+	
+		
+		
+	}
+
+}
+
+
+
+Funcation and biFuncation
+------------------------------
+
+
+//Funcation convert something to something else
+		
+		//Book object --> title
+		
+		Function<Book, String>titleFuncation=book-> book.getTitle();
+		
+		Function<Book, Double>priceFuncation=book-> book.getPrice();
+		
+		Function<Book, Double>priceFuncationWithMR=Book::getPrice;
+		
+		Function<Book, String>pricyBookNameFunction=Book::costlyBookName;
+		
+		Function<Book, Boolean>f1=Book::isCostlyBook;
+		
+		//Book-> bookDTO
+		
+		Function<Book, BookDto> f2= book->  new BookDto(book.getTitle(), book.getPrice());
+		
+		
+		Function<Book, BookDto> f3= Book::convertToBookDto;
+		
+		
+		Book b1=new Book(1, "rich dad poor dad", "RK", 200);
+		Book b2=new Book(1, "rich dad poor dad", "RK", 200);
+		//get total price of both the books
+		
+		BiFunction<Book, Book, Double> biFunctionDemo2=(b1Temp, b2Temp)->b1.getPrice()+b2.getPrice();
+		
+		double total=biFunctionDemo2.apply(b1, b2);
+		
+		
+		
+		
+		
+		BookDto bookDto=f3.apply(b1);
+		
+		System.out.println(bookDto);
+		
+		//name: rajeev surname: gupta
+		BiFunction<String, String, String>biFunctionDemo=( name,  surname)->  name.concat(surname);
+			
+		System.out.println(biFunctionDemo.apply("rajiv", "gupta"));
+		
+		
+		//
+		
+	
+	Consumer:
+	----------
+	
+		
+
+//Consumer: take T dont return anythings
+		Consumer<Book> consumer1=book-> System.out.println(book);
+		
+		Consumer<Book> consumer5=System.out::println;
+		
+		
+		Consumer<Book> consumer3=Book::foo;
+		
+		Book bTemp=new Book(1, "rich dad poor dad", "RK", 200);
+		consumer1.accept(bTemp);
+		
+		consumer3.accept(bTemp);
+		
+		
+		BiConsumer<Book, String>consumer4=(b,authorName)-> System.out.println(b+": "+ authorName);
+		
+		
+		
+		
+		Consumer<Integer> consumer2=i-> System.out.println(i);
+		
+		consumer2.accept(33);
+		
+		System.out.println("-------------------------------");
+		
+
+
+
+//Supplier: aka factory dp
+		
+		//we want a supplier that return "amit kumar"
+		//Optional in java 8*
+		Supplier<String> supplier1=() ->"amit kumar";
+			
+		Supplier<MyException> suppliler2=()-> new MyException("some ex happens");
+		
+		//Supplier<MyException> suppliler2=MyException::new;
+		
+		
+		String string = supplier1.get();
+		System.out.println(string);
+		
+//		Optional<String> opString=Optional.ofNullable("kapil");
+//		
+//		String name= opString.orElseGet(supplier1)
+//		
+
+
+
+
+
+Why java 8 straem ? does it really matter?
+
+---------------------------------------------
+
+package com.day1.session1.ex0;
+
+import java.util.stream.LongStream;
+
+//calculating prime no bw 1 to 1_000_00
+
+class Prime{
+	public static boolean isPrime(Long n){
+		boolean isPrimeNumber=true;
+		for(int i=2;i<n;i++){
+			if(n%i==0)
+				isPrimeNumber=false;
+		}
+		return isPrimeNumber;
+	}
+}
+
+public class MotivationJava8 {
+	
+	public static void main(String[] args) {
+		System.out.println(Runtime.getRuntime().availableProcessors());
+		long start= System.currentTimeMillis();
+		
+		long counter=0;
+		for(long i=0;i<=1_000_0;i++) {
+			if(Prime.isPrime(i))
+				counter++;
+		}
+		
+		long end= System.currentTimeMillis();
+		System.out.println("time taken : "+ (end-start)+" ms");
+		System.out.println(counter);
+		/*
+		 * System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "8");
+		or
+
+		java -Djava.util.concurrent.ForkJoinPool.common.parallelism=8 MotivationJava8
+
+		 */
+	}
+
+}
+
+
+
+
+
+
+
+traditional way stream:
+-----------------------
+16
+time taken : 136 ms
+1231
+
+
+
+
+With parellel stream:
+-----------------------
+
+16
+time taken : 54 ms
+1231
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

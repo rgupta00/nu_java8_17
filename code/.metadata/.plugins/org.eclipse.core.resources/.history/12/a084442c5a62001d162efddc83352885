@@ -1,0 +1,13 @@
+package com.day1.session2.ex3;
+import java.util.*;
+public class AppleApp {
+	public List<Apple> getAllGreenApples(List<Apple> apples){
+		List<Apple> list=new ArrayList<>();
+		for(Apple temp: apples) {
+			if(temp.getColor().equals("green"))
+				list.add(temp);
+		}
+		return list;
+		
+	}
+}

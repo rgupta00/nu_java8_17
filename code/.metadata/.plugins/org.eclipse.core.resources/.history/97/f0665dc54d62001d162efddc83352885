@@ -1,0 +1,19 @@
+package com.day1.session1.demo;
+
+import java.util.function.Predicate;
+
+public class F_SomeFIFromJDK {
+	
+	public static void main(String[] args) {
+		//Predicate
+		//to check if name contain raj
+		
+		Predicate<String> predicate= name-> name.contains("raj");
+		Predicate<Integer> predicate2=no-> no%2==0;
+		
+		System.out.println(predicate.test("amit"));
+		
+	
+	}
+
+}

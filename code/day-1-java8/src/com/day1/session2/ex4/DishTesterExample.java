@@ -11,6 +11,27 @@ public class DishTesterExample {
 		List<Dish> allDishes=getAllDishes();
 		//Return the names of dishes that are low in calories (<400),
 		//Sorted by number of calories
+//		List<String> dishesNames=allDishes.stream()
+//				.filter(dish-> dish.getCalories()<400)
+//				.sorted(( o1,  o2)-> Integer.compare(o2.getCalories(), o1.getCalories()))
+//				.map(dish-> dish.getName())
+//				
+//				.collect(Collectors.toList());
+		
+//		List<String> dishesNames=allDishes.stream()
+//				.filter(dish-> dish.getCalories()<400)
+//				.sorted(Comparator.comparing(Dish::getCalories).reversed())
+//				.map(dish-> dish.getName())
+//				
+//				.collect(Collectors.toList());
+//				
+//		dishesNames.forEach(dishName-> System.out.println(dishName));
+		
+		allDishes.stream()
+				.filter(dish-> dish.getCalories()<400)
+				.sorted(Comparator.comparing(Dish::getCalories).reversed())
+				.map(dish-> dish.getName())
+				.forEach(dishName-> System.out.println(dishName));
 		
 	}
 	

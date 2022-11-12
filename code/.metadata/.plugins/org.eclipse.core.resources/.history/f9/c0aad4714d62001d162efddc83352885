@@ -1,0 +1,20 @@
+package com.day1.session1.demo;
+
+import java.util.function.Predicate;
+
+public class F_SomeFIFromJDK {
+	
+	public static void main(String[] args) {
+		//Predicate
+		//to check if name contain raj
+		Predicate<String> namePredicate=new Predicate<String>() {
+
+			@Override
+			public boolean test(Object t) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+		};
+	}
+
+}

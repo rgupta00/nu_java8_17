@@ -1,5 +1,6 @@
 package com.day1.session1.demo;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,12 +16,29 @@ public class D_LambadaSimplifyTheCode {
 						new Book(11, "python", "ekta", 840),
 						new Book(621, "c programming", "gunika", 300));
 		
+		//i want to print the name of all books sorted as price (rev order)
+		
+//		books.stream()
+//		.sorted(comparator.comparing(book::getprice).reversed())
+//		.map(b-> b.gettitle())
+//		.foreach(title-> system.out.println(title));
+		
 //		Collections.sort(books, new Comparator<Book>() {
 //			@Override
 //			public int compare(Book o1, Book o2) {
 //				return Double.compare(o2.getPrice(), o1.getPrice());
 //			}
 //		});
+//		
+//		List<String> booksName=new ArrayList<>();
+//		for(Book book: books) {
+//			booksName.add(book.getTitle());
+//		}
+//		
+//		for(String title: booksName)
+//			System.out.println(title);
+//		
+		
 //		
 //		Collections.sort(books, (Book o1, Book o2)-> {
 //				return Double.compare(o2.getPrice(), o1.getPrice());

@@ -17,47 +17,50 @@ import com.day1.session1.ex2.Book;
 
 public class AppleTester {
 
-		
-		public static void main(String[] args) {
+	public static void main(String[] args) {
 
-		List<Apple> apples = Arrays.asList(new Apple("red", 400), new Apple(
-				"green", 300), new Apple("green", 200), new Apple("red", 250));
-		
-		//Most imp functional interface in java 8
-		
-		//Predicate	
-			
-		//Function
-		
-		//Consumer
-		
-		//biConsumer
-		Map<String, Integer>map=new HashMap<String, Integer>();
-		
-		//Supplier
-	
-		
-		//BiFunction
-	
+		List<Apple> apples = Arrays.asList(new Apple("red", 400), new Apple("green", 300), new Apple("green", 200),
+				new Apple("red", 250));
+
+		Predicate<Apple> heavyApplePredicate = a -> a.getWeight() >= 250;
+
+		List<Apple> heavyApples = AppleApp.getAllApplesOnPredicate(apples, heavyApplePredicate);
+
+		heavyApples.forEach(a -> System.out.println(a));
+
+		System.out.println("---------------------");
+		Predicate<Apple> greenApplePredicate = a -> a.getColor().equals("green");
+
+		List<Apple> greenApples = AppleApp.getAllApplesOnPredicate(apples, greenApplePredicate);
+
+		greenApples.forEach(a -> System.out.println(a));
 		
 		
+		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4");
+		Predicate<Apple> greenAndHeavyApplePredicate =greenApplePredicate.and(heavyApplePredicate).negate() ;
 		
+
+		List<Apple> greenAndHeavyApples = AppleApp.getAllApplesOnPredicate(apples, greenAndHeavyApplePredicate);
+
+		greenAndHeavyApples.forEach(a -> System.out.println(a));
+		
+		
+		
+
+		// Most imp functional interface in java 8
+
+		// Predicate
+
+		// Function
+
+		// Consumer
+
+		// biConsumer
+		Map<String, Integer> map = new HashMap<String, Integer>();
+
+		// Supplier
+
+		// BiFunction
+
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

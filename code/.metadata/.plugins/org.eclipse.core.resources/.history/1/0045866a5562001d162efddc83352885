@@ -1,0 +1,208 @@
+package com.day1.session1.demo;
+
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+
+class Emp{
+	private String name;
+
+	public Emp(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public static boolean isNameContainRaj(String name) {
+		return name.contains("raj");
+	}
+}
+class MyException extends RuntimeException{
+
+	public MyException(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
+	
+}
+public class F_SomeFIFromJDK {
+	
+	public static void main(String[] args) {
+		
+		//Supplier: aka factory dp
+		
+		//we want a supplier that return "amit kumar"
+		//Optional in java 8*
+		Supplier<String> supplier1=() ->"amit kumar";
+			
+		Supplier<MyException> suppliler2=()-> new MyException("some ex happens");
+		
+		//Supplier<MyException> suppliler2=MyException::new;
+		
+		
+		
+		
+		
+		
+		//Consumer: take T dont return anythings
+		Consumer<Book> consumer1=book-> System.out.println(book);
+		
+		Consumer<Book> consumer5=System.out::println;
+		
+		
+		Consumer<Book> consumer3=Book::foo;
+		
+		Book bTemp=new Book(1, "rich dad poor dad", "RK", 200);
+		consumer1.accept(bTemp);
+		
+		consumer3.accept(bTemp);
+		
+		
+		BiConsumer<Book, String>consumer4=(b,authorName)-> System.out.println(b+": "+ authorName);
+		
+		
+		
+		
+		Consumer<Integer> consumer2=i-> System.out.println(i);
+		
+		consumer2.accept(33);
+		
+		System.out.println("-------------------------------");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//Funcation convert something to something else
+		
+		//Book object --> title
+		
+		Function<Book, String>titleFuncation=book-> book.getTitle();
+		
+		Function<Book, Double>priceFuncation=book-> book.getPrice();
+		
+		Function<Book, Double>priceFuncationWithMR=Book::getPrice;
+		
+		Function<Book, String>pricyBookNameFunction=Book::costlyBookName;
+		
+		Function<Book, Boolean>f1=Book::isCostlyBook;
+		
+		//Book-> bookDTO
+		
+		Function<Book, BookDto> f2= book->  new BookDto(book.getTitle(), book.getPrice());
+		
+		
+		Function<Book, BookDto> f3= Book::convertToBookDto;
+		
+		
+		Book b1=new Book(1, "rich dad poor dad", "RK", 200);
+		Book b2=new Book(1, "rich dad poor dad", "RK", 200);
+		//get total price of both the books
+		
+		BiFunction<Book, Book, Double> biFunctionDemo2=(b1Temp, b2Temp)->b1.getPrice()+b2.getPrice();
+		
+		double total=biFunctionDemo2.apply(b1, b2);
+		
+		
+		
+		
+		
+		BookDto bookDto=f3.apply(b1);
+		
+		System.out.println(bookDto);
+		
+		//name: rajeev surname: gupta
+		BiFunction<String, String, String>biFunctionDemo=( name,  surname)->  name.concat(surname);
+			
+		System.out.println(biFunctionDemo.apply("rajiv", "gupta"));
+		
+		
+		//
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//Predicate
+		//to check if name contain raj
+		
+		//lambda vs Method ref ::
+		
+		Predicate<String> predicate= name-> name.contains("raj");
+		
+		Predicate<String> predicateWithMethodRef= Emp::isNameContainRaj;
+		
+		Predicate<Integer> predicate2=no-> no%2==0;
+		
+		System.out.println(predicate.test("amit"));
+		
+		System.out.println(predicate2.test(33));
+		
+		//predicate for costly book
+		Predicate<Book>bookPredicateCostly= book ->book.getPrice()>=500;
+		Predicate<Book>bookPredicateJava= book ->book.getTitle().contains("java");
+		
+		Book book=new Book(22, "java in action", "Raj", 400);
+		//check if books is java book and costly too
+		
+		Predicate<Book>costlyAndJavaBookPredicate= bookPredicateCostly.and(bookPredicateJava);
+		
+		System.out.println(costlyAndJavaBookPredicate.test(book));
+		
+		Predicate<Book>costlyOrJavaBookPredicate= bookPredicateCostly.or(bookPredicateJava);
+		
+		Predicate<Book>costlyAndJavaBookPredicateNeg= bookPredicateCostly.and(bookPredicateJava).negate();
+		
+		//x and y if x > y ? true: false
+		
+		BiPredicate<Integer, Integer> p1=( x,  y)-> x>y;
+			
+		System.out.println(p1.test(4, 71));
+		
+	
+		
+		
+	}
+
+}
