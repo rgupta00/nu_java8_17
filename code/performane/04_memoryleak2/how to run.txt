@@ -1,0 +1,31 @@
+-Xmx20m -verbose:gc
+
+
+
+check adaptive policy 
+
+jinfo -flag UseAdaptiveSizePolicy pid
+jinfo -flag NewRatio pid
+
+changing ration of young to old gen
+-Xmx20m -XX:NewRatio=1 -verbose:gc
+
+
+how much memory for s0 and s1 space
+jinfo -flag SurvivorRatio 7476
+default is 8
+
+Changing ration
+-Xmx20m  -XX:NewRatio=1 -XX:SurvivorRatio=5 -verbose:gc
+
+how many cycle object servive before moving to old gen?
+
+
+jinfo -flag MaxTenuringThreshold 7476
+
+
+Changing ration
+-Xmx20m   -XX:MaxTenuringThreshold=8  -XX:NewRatio=1 -XX:SurvivorRatio=5 -verbose:gc
+
+
+

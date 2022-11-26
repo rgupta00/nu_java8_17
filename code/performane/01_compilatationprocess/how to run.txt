@@ -1,0 +1,12 @@
+understanding JIT compilation process
+
+java -XX:+PrintCompilation Main 10
+
+understanding JIT compilation process puting output to a file
+
+java -XX:+UnlockDiagnosticVMOptions -XX:+LogCompilation Main 5000
+
+
+run with more no of thread to compile (cache) our code
+
+java -XX:CICompilerCount=6 -XX:+PrintCompilation Main 5000
