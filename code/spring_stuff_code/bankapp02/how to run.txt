@@ -1,0 +1,87 @@
+
+get all accounts:
+
+http://localhost:8090/bankapp/accounts
+
+
+get an specific account:
+
+http://localhost:8090/bankapp/accounts/1
+
+
+add new account:
+
+
+http://localhost:8090/bankapp/accounts/1
+{
+	"name": "kavita",
+	"balance":2000,
+	"phoneNo":"8475655660",
+	"email":"kavita@gmail.com"
+}
+
+
+update account contact details
+
+http://localhost:8090/bankapp/updatedetails/3
+
+{
+	"phoneNo":"8475655000",
+	"email":"kavita_kumari@gmail.com"
+}
+
+------------------------------------------------------------------------
+
+
+fund transfer
+
+Post
+
+http://localhost:8090/bankapp/transfer
+{
+	"fromAccId": 1,
+	"toAccId":2,
+	"amount":100
+}
+
+
+name;
+	private double balance;
+	private String phoneNo;
+	private String email
+	
+	
+http://localhost:8090/bankapp/accounts
+{
+	"name": "kavita",
+	"balance":2000,
+	"phoneNo":"8475655660",
+	"email":"kavita@gmail.com"
+}
+
+
+fund withdraw
+
+Post
+
+http://localhost:8090/bankapp/withdraw
+{
+	"id":2,
+	"amount":100
+}
+
+
+
+fund deposit
+
+Post
+
+http://localhost:8090/bankapp/deposit
+{
+	"id":2,
+	"amount":100
+}
+
+
+
+
